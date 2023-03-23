@@ -3,7 +3,7 @@
 
 <template>
   <v-container>
-    <v-carousel :color="'#7D7D7D'">
+    <v-carousel :color="'#7D7D7D'" id="carousel">
       <v-carousel-item
         src="https://scontent.ftpe9-1.fna.fbcdn.net/v/t39.30808-6/334950172_752937896248509_2917887479560866319_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=xv9KLDoar5cAX9FH6as&_nc_ht=scontent.ftpe9-1.fna&oh=00_AfAjhtP7PVInBaSTTaqsKgzpJ0uEhgbeDbPbkSfYdBQLdA&oe=6420002F"
       ></v-carousel-item>
@@ -19,4 +19,9 @@
   </v-container>
 </template>
 
-<style scoped></style>
+<style scoped>
+#carousel :deep(.v-carousel__controls){
+  background: none;
+}
+
+</style>

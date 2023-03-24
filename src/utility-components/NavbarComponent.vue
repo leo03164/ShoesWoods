@@ -22,7 +22,7 @@ const drawer = ref<boolean>(false)
       </v-app-bar-nav-icon>
 
       <v-toolbar-title>
-        <span class="title">鞋槓人森的家</span>
+        <span class="title">鞋槓人森的秘密基地</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -47,5 +47,3 @@ const drawer = ref<boolean>(false)
       </v-list>
     </v-navigation-drawer>
 </template>
-
-<style scoped></style>

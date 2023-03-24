@@ -1,27 +1,109 @@
 <script setup lang="ts">
+import { useUserStore } from '../stores/user'
+const userStore = useUserStore()
+const items = [
+  {
+    id: 1,
+    title: 'Top 1 Australian beaches',
+    subtitle: 'Number 1',
+    content: 'Whitsunday Island, Whitsunday Islands'
+  },
+  {
+    id: 2,
+    title: 'Top 10 Australian beaches',
+    subtitle: 'Number 2',
+    content: 'Byron Bay, New South Wales'
+  },
+  {
+    id: 3,
+    title: 'Top 10 Australian beaches',
+    subtitle: 'Number 3',
+    content: 'Cable Beach, Western Australia'
+  },
+  {
+    id: 4,
+    title: 'Top 10 Australian beaches',
+    subtitle: 'Number 4',
+    content: 'Noosa Main Beach, Queensland'
+  },
+  {
+    id: 5,
+    title: 'Top 10 Australian beaches',
+    subtitle: 'Number 5',
+    content: 'Bells Beach, Victoria'
+  },
+  {
+    id: 6,
+    title: 'Top 10 Australian beaches',
+    subtitle: 'Number 6',
+    content: 'Manly Beach, New South Wales'
+  },
+  {
+    id: 7,
+    title: 'Top 10 Australian beaches',
+    subtitle: 'Number 7',
+    content: 'Burleigh Heads Beach, Queensland'
+  },
+  {
+    id: 8,
+    title: 'Top 10 Australian beaches',
+    subtitle: 'Number 8',
+    content: 'Bondi Beach, New South Wales'
+  },
+  {
+    id: 9,
+    title: 'Top 10 Australian beaches',
+    subtitle: 'Number 9',
+    content: 'Surfers Paradise Beach, Queensland'
+  },
+  {
+    id: 10,
+    title: 'Top 10 Australian beaches',
+    subtitle: 'Number 10',
+    content: 'Hyams Beach, Jervis Bay Territory'
+  }
+]
 </script>
 
 <template>
-  <v-container>
-    <v-carousel :color="'#7D7D7D'" id="carousel">
-      <v-carousel-item
-        src="https://scontent.ftpe9-1.fna.fbcdn.net/v/t39.30808-6/334950172_752937896248509_2917887479560866319_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=xv9KLDoar5cAX9FH6as&_nc_ht=scontent.ftpe9-1.fna&oh=00_AfAjhtP7PVInBaSTTaqsKgzpJ0uEhgbeDbPbkSfYdBQLdA&oe=6420002F"
-      ></v-carousel-item>
+  <v-container fluid class="homePage__container">
+    <v-row no-gutters>
+      <v-col class="postInfoCard__column" v-for="item in items" :key="item.id" :cols="userStore.isMobile ? 12 : 3">
+        <v-card class="mx-auto postInfoCard">
+          <v-img
+            class="align-end text-white"
+            src="https://scontent.ftpe9-1.fna.fbcdn.net/v/t39.30808-6/334950172_752937896248509_2917887479560866319_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=xv9KLDoar5cAX9FH6as&_nc_ht=scontent.ftpe9-1.fna&oh=00_AfAjhtP7PVInBaSTTaqsKgzpJ0uEhgbeDbPbkSfYdBQLdA&oe=6420002F"
+            cover
+          >
+          </v-img>
 
-      <v-carousel-item
-        src="https://scontent.ftpe9-1.fna.fbcdn.net/v/t39.30808-6/327795310_1161000711285703_1519418558105098640_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=730e14&_nc_ohc=kN5YZwO2MSUAX8UhSUP&_nc_oc=AQls-23H3teUTncPChxyl3W02u2s3fuGfgZorbT7ZLnvNe5mmYGHpWdSbGcvRG5Akwg&_nc_ht=scontent.ftpe9-1.fna&oh=00_AfA5PhaVNc58VvOa3MaOZue7mZSlDTMAypixzI6IbPPfvQ&oe=6420AC90"
-      ></v-carousel-item>
+          <!-- 這個比較適合放 title -->
+          <v-card-subtitle class="pt-4"> {{ item.subtitle }} </v-card-subtitle>
 
-      <v-carousel-item
-        src="https://scontent.ftpe9-1.fna.fbcdn.net/v/t39.30808-6/324431009_853213852576568_8811024443079132010_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=132DkZnL2BoAX-2cVRH&_nc_ht=scontent.ftpe9-1.fna&oh=00_AfCHyVNT08QFA1_zx9ijvX0W3ZSXUE8SQZAh3CEF-DvIlQ&oe=641F3322"
-      ></v-carousel-item>
-    </v-carousel>
+          <v-card-text>
+            <div>{{ item.content }}</div>
+          </v-card-text>
+
+          <v-card-actions>
+            <v-btn color="orange"> Share </v-btn>
+
+            <v-btn color="orange"> Explore </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <style scoped>
-#carousel :deep(.v-carousel__controls){
-  background: none;
+.postInfoCard__column{
+  margin-top: 15px;
 }
-
+@media screen and (min-width: 768px) {
+  .homePage__container{
+    display: flex;
+    justify-content: center;
+    padding: 0 100px;
+  }
+}
 </style>

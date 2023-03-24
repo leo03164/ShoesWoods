@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { detectDeviceType } from '../ts/utils'
+import { useUserStore } from '../stores/user'
 
-const userDevice = detectDeviceType()
+const userStore = useUserStore()
+
 const isShowHamburgerIcon = computed(() => {
-  return userDevice === 'mobile'
+  return userStore.isMobile
 })
 
 const isShowToolbarItems = computed(() => {
-  return userDevice !== 'mobile'
+  return !userStore.isMobile
 })
 
 const drawer = ref<boolean>(false)
